@@ -1,8 +1,55 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { auth } from "../firebase";
 
 
 const Auth = () => {
   const [login, setLogin] = useState(true)
+
+  const loginbyEmail = (e) => {
+    e.preventDefault();
+    const email = e.target.floating_email.value;
+    const password = e.target.floating_password.value;
+
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        toast.success("Welcome Back");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const signupbyEmail = (e) => {
+    e.preventDefault();
+    const email = e.target.floating_email.value;
+    const password = e.target.floating_password.value;
+    const name = e.target.floating_name.value;
+
+    auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            var user = userCredential.user;
+            user.updateProfile({
+                displayName: name,
+            })
+            .then(() => {
+                toast.success("Registered Successfully");
+            }
+            )
+            .catch((error) => {
+                    toast.error(error.message);
+                }
+            );
+        }
+        )
+        .catch((error) => {
+                toast.error(error.message);
+            }
+        );
+  };
+
   return (
     <section className="flex flex-col gap-4 justify-center items-center h-screen">
       {/* logo or name */}
@@ -13,7 +60,7 @@ const Auth = () => {
         <div className="flex flex-col gap-8 justify-between items-center w-[20rem] md:w-[30rem] h-[70vh] bg-white my-4 rounded-lg p-4">
           <div className="text-3xl font-bold">Login</div>
           {/* Form */}
-          <form className="flex flex-col justify-center items-center gap-4 w-[80%]">
+          <form onSubmit={loginbyEmail} className="flex flex-col justify-center items-center gap-4 w-[80%]">
             <div className="relative z-0 w-full mb-6 group">
               <input
                 type="email"
@@ -68,7 +115,7 @@ const Auth = () => {
         <div className="flex flex-col gap-8 justify-between items-center w-[20rem] md:w-[30rem] h-[70vh] bg-white my-4 rounded-lg p-4">
           <div className="text-3xl font-bold">Sign Up</div>
           {/* Form */}
-          <form className="flex flex-col justify-center items-center gap-4 w-[80%]">
+          <form onSubmit={signupbyEmail} className="flex flex-col justify-center items-center gap-4 w-[80%]">
             <div className="relative z-0 w-full mb-6 group">
               <input
                 type="text"

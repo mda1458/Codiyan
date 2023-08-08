@@ -10,22 +10,29 @@ export const useAuth = () => {
 };
 
 const AuthProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
-      if (user) navigate("/");
-      else navigate("/auth");
+      setLoading(false);
+      if (user) {
+        navigate("/");
+      } else {
+        navigate("/auth");
+      }
     });
-  }, [user, navigate]);
+
+    return unsubscribe;
+  }, [navigate]);
 
   const value = { user };
 
   return (
     <AuthContext.Provider value={value}>
-      {children}
+      {!loading && children}  
     </AuthContext.Provider>
   );
 };
