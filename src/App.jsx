@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import AuthProvider from "./context/AuthContext"
-import Dashboard from "./components/Dashboard"
+import Dashboard from "./components/Main/Dashboard"
 import Auth from "./components/Auth"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"

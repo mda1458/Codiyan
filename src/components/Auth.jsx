@@ -127,7 +127,7 @@ const Auth = () => {
             </div>
             <button
               type="submit"
-              className="text-white transition-transform hover:scale-105 bg-gradient-to-r hover:bg-gradient-to-l from-cyan-500 to-purple-600 focus:ring-4 focus:outline-none font-medium rounded-xl text-md w-full sm:w-[33%] px-5 py-2.5 text-center"
+              className="text-white transition-transform hover:scale-105 bg-gradient-to-r hover:bg-gradient-to-l from-teal-500 to-purple-600 focus:ring-4 focus:outline-none font-medium rounded-xl text-md w-full sm:w-[33%] px-5 py-2.5 text-center"
             >
               Login
             </button>
@@ -220,7 +220,7 @@ const Auth = () => {
             </div>
             <button
               type="submit"
-              className="text-white transition-transform hover:scale-105 bg-gradient-to-r hover:bg-gradient-to-l from-cyan-500 to-purple-600 focus:ring-4 focus:outline-none font-medium rounded-xl text-md w-full sm:w-[33%]  px-5 py-2.5 text-center"
+              className="text-white transition-transform hover:scale-105 bg-gradient-to-r hover:bg-gradient-to-l from-teal-500 to-purple-600 focus:ring-4 focus:outline-none font-medium rounded-xl text-md w-full sm:w-[33%]  px-5 py-2.5 text-center"
             >
               Sign Up
             </button>

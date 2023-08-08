@@ -1,10 +1,12 @@
-import { useAuth } from '../context/AuthContext'
-import { auth } from '../firebase'
+import { useAuth } from '../../context/AuthContext'
+import { auth } from '../../firebase'
+import Navbar from './Navbar'
 
 const Dashboard = () => {
     const { user } = useAuth()
     return (
       <>
+      <Navbar />
         <div className="text-5xl">
             Welcome {user.displayName}
         </div>
