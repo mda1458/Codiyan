@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import AuthProvider from "./context/AuthContext"
-import Login from "./components/Login"
 import Dashboard from "./components/Dashboard"
-import Signup from "./components/Signup"
+import Auth from "./components/Auth"
 
 
 const App = () => {
@@ -10,8 +9,7 @@ const App = () => {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/" element={<Dashboard />} />
         </Routes>
       </AuthProvider>

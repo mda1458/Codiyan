@@ -16,7 +16,9 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(user);
-      user ? navigate("/") : navigate("/login");
+      if (user) navigate("/");
+      else if (!user) navigate("/login");
+      else navigate("/signup");
     });
   }, [user, navigate]);
 
