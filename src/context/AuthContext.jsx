@@ -19,9 +19,9 @@ const AuthProvider = ({ children }) => {
       setUser(user);
       setLoading(false);
       if (user) {
-        navigate("/");
+        navigate("/dashboard");
       } else {
-        navigate("/auth");
+        navigate("/");
       }
     });
 
