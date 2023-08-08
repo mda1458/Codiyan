@@ -17,8 +17,7 @@ const AuthProvider = ({ children }) => {
     auth.onAuthStateChanged((user) => {
       setUser(user);
       if (user) navigate("/");
-      else if (!user) navigate("/login");
-      else navigate("/signup");
+      else navigate("/auth");
     });
   }, [user, navigate]);
 
