@@ -43,11 +43,7 @@ const Navbar = () => {
                     <div className="absolute right-4 top-20 py-2 w-48 bg-white rounded-lg shadow-xl">
                         <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-purple-500 hover:text-white">Account settings</Link>
                         <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-purple-500 hover:text-white">Support</Link>
-                        <div onClick={
-                            () => {
-                                auth.signOut();
-                            }
-                        } className="cursor-pointer block px-4 py-2 text-gray-800 hover:bg-purple-500 hover:text-white">Sign out</div>
+                        <div onClick={()=>auth.signOut()} className="cursor-pointer block px-4 py-2 text-gray-800 hover:bg-purple-500 hover:text-white">Sign out</div>
                     </div>
                 )}
             </div>
