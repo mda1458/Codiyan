@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { auth } from "../firebase";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
+import firebase from "firebase/compat/app";
 
 
 const Auth = () => {
@@ -21,6 +24,32 @@ const Auth = () => {
         toast.error(error.message);
       });
   };
+
+  const loginbyGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth
+      .signInWithPopup(provider)
+      .then(() => {
+        toast.success("Welcome Back");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const loginbyFacebook = () => {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    auth
+      .signInWithPopup(provider)
+      .then(() => {
+        toast.success("Welcome Back");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+    
 
   const signupbyEmail = (e) => {
     e.preventDefault();
@@ -57,10 +86,13 @@ const Auth = () => {
         Codiyan
       </div>
       {login ? (
-        <div className="flex flex-col gap-8 justify-between items-center w-[20rem] md:w-[30rem] h-[70vh] bg-white my-4 rounded-lg p-4">
+        <div className="flex flex-col gap-8 justify-between items-center w-[20rem] md:w-[30rem] sm:h-[80vh] bg-white my-4 rounded-lg p-4">
           <div className="text-3xl font-bold">Login</div>
           {/* Form */}
-          <form onSubmit={loginbyEmail} className="flex flex-col justify-center items-center gap-4 w-[80%]">
+          <form
+            onSubmit={loginbyEmail}
+            className="flex flex-col justify-center items-center gap-4 w-[80%]"
+          >
             <div className="relative z-0 w-full mb-6 group">
               <input
                 type="email"
@@ -100,6 +132,25 @@ const Auth = () => {
               Login
             </button>
           </form>
+          <div className="or-spacer">
+            <div className="mask"></div>
+            <span>
+              <i>or</i>
+            </span>
+          </div>
+          {/* Sign in with other */}
+          <div className="flex gap-16">
+            {/* Google */}
+            <FcGoogle
+              onClick={loginbyGoogle}
+              className="text-4xl cursor-pointer"
+            />
+            {/* Facebook */}
+            <FaFacebook
+              onClick={loginbyFacebook}
+              className="text-4xl text-blue-700 cursor-pointer"
+            />
+          </div>
           {/* Signup link */}
           <div className="text-md text-slate-500 ">
             {"Don't"} have an account?{" "}
@@ -112,10 +163,13 @@ const Auth = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-8 justify-between items-center w-[20rem] md:w-[30rem] h-[70vh] bg-white my-4 rounded-lg p-4">
+        <div className="flex flex-col gap-8 justify-between items-center w-[20rem] md:w-[30rem] sm:h-[80vh] bg-white my-4 rounded-lg p-4">
           <div className="text-3xl font-bold">Sign Up</div>
           {/* Form */}
-          <form onSubmit={signupbyEmail} className="flex flex-col justify-center items-center gap-4 w-[80%]">
+          <form
+            onSubmit={signupbyEmail}
+            className="flex flex-col justify-center items-center gap-4 w-[80%]"
+          >
             <div className="relative z-0 w-full mb-6 group">
               <input
                 type="text"
